@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+    <div id="item1">
+        <div class="content">
+            <div class="checkInput">
+                <label>名称</label>
+                <input type="text">
+                <button>验证</button>
+            </div>
+            <div class="tips">
+                <span>必填，长度为4-16个字符</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .wrapper{
+        left:calc(50% - 200px);
+        position:relative;
+    }
+    #item1{
+        margin-bottom:30px;
+        position: relative;
+    }
+    label{
+        font-size:24px;
+        display: inline-block;
+        width:50px;
+        font-family: "Microsoft YaHei UI";
+        margin-right: 30px;
+    }
+    input{
+        border:1px solid #ddd;
+        -webkit-border-radius:10px;
+        -moz-border-radius:10px;
+        border-radius:10px;
+        /*display: inline-block;*/
+        width:300px;
+        height:40px;
+        margin-right: 10px;
+        outline:none;
+    }
+    .tips{
+        left: 80px;
+        position: relative;
+        font-size:14px;
+        color: #c2c2c2;
+        line-height:28px;
+    }
+    button{
+        height:40px;
+        width:60px;
+        color: #ffffff;
+        background: #2f79ba;
+        border:none;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+        border-radius:5px;
+    }
+
+</style>
+<script>
+    window.onload = function(){
+        oInput = document.querySelector('button');
+        //绑定监听
+        oInput.addEventListener('click',function(e){
+            getTarget(e);
+        },false);
+    };
+    function getTarget(e){
+        let input = document.querySelector('input');
+        let val = input.value;
+
+        let checked = check(val);
+        if(checked==0){
+            setClolorMsg('#e83c44','姓名不能为空')
+        }else if(checked==1){
+            setClolorMsg('#e83c44','长度为4-16个字符')
+        }else if(checked == 2){
+            setClolorMsg('#6bc156','名称格式正确')
+        }
+    }
+    //格式检查
+    function check(val){
+        if(val==''){
+            return 0
+        }else{
+            let re=val.replace(/[^x00-xff]/g,'AB');
+            if(re.length<4||re.length>16){
+                return 1
+            }else{
+                return 2
+            }
+        }
+    }
+    //设置提醒
+    function setClolorMsg(color,msg){
+        let input = document.querySelector('input');
+        let tips =document.querySelector('span');
+        input.style.borderColor = tips.style.color=color;
+        tips.innerHTML = msg
+    }
+</script>
+</body>
+</html>
