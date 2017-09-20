@@ -1,0 +1,47 @@
+.wrapper{
+    position: relative;
+    margin-top:30px;
+    left:calc(50% - 100px);
+}
+div[id^=item]{
+    margin-bottom:30px;
+    position: relative;
+}
+.tips label{
+    display: inline-block;
+    width:100px;
+    text-align: left;
+}
+.tips label{
+    line-height:40px;
+    font-size:22px;
+    font-family: "Microsoft YaHei UI";
+}
+.tips input{
+    height:40px;
+    width:200px;
+    border:1px solid #dddddd;
+    border-radius:10px;
+    outline: none;
+}
+div[id^=item] .span{
+    left: 100px;
+    position: relative;
+    font-size:14px;
+    color: #c2c2c2;
+    line-height:28px;
+    height:28px;
+}
+#item6 button{
+    width:100px;
+    height:40px;
+    position: relative;
+    left:300px;
+    background: #2f79ba;
+    border-radius:8px;
+    outline: none;
+    border:none;
+}
+input:focus{
+    border:1px solid #62aeec;
+}
