@@ -83,7 +83,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var table = _createMap2.default.setMap();
 var map = document.getElementById('map');
 map.appendChild(table);
-_createCar2.default.createCar();
+var Car = _createCar2.default.init();
+var car1 = new Car();
+window.car1 = car1;
 
 /***/ }),
 /* 1 */
@@ -135,25 +137,39 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.default = {
-    getFirstTd: function getFirstTd() {
-        var map = document.getElementById('map').querySelector('table');
-        var firstTr = map.getElementsByTagName('tr')[1];
-        var firstTd = firstTr.getElementsByTagName('td')[1];
-        return firstTd;
-    },
-    createCar: function createCar() {
-        var firstTd = this.getFirstTd();
-        var carDiv = document.createElement('div');
-        var carImg = document.createElement('img');
-        carDiv.classList = 'car';
-        carImg.src = "style/BOT.png";
-        carImg.classList = 'carImg';
-        carDiv.appendChild(carImg);
-        firstTd.appendChild(carDiv);
-    }
+  CreateCar: function CreateCar() {
+    this.$el = this.createElement(), this.x = 0, this.y = 0, this.deg = 0;
+  },
+  addPrototype: function addPrototype(item) {
+    item.construction = item;
+    item.prototype.createElement = function () {
+      var firstTd = this.getFirstTd();
+      var carDiv = document.createElement('div');
+      var carImg = document.createElement('img');
+      carDiv.classList = 'car';
+      carImg.src = "style/BOT.png";
+      carImg.classList = 'carImg';
+      carDiv.appendChild(carImg);
+      carDiv.style.transform = 'rotate(' + this.deg + 'deg)';
+      firstTd.appendChild(carDiv);
+      return carDiv;
+    }, item.prototype.getFirstTd = function () {
+      var map = document.getElementById('map').querySelector('table');
+      var firstTr = map.getElementsByTagName('tr')[1];
+      var firstTd = firstTr.getElementsByTagName('td')[1];
+      return firstTd;
+    }, item.prototype.setDirection = function (deg) {
+      this.deg += deg;
+      this.$el.style.transform = 'rotate(' + this.deg + 'deg)';
+    };
+  },
+  init: function init() {
+    this.addPrototype(this.CreateCar);
+    return this.CreateCar;
+  }
 };
 
 /***/ })
