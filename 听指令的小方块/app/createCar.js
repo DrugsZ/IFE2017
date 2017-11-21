@@ -1,9 +1,9 @@
 export default{
 	CreateCar(){
-    	this.$el=this.createElement(),
     	this.x=0,
     	this.y=0,
-    	this.deg=0
+    	this.deg=-180,
+    	this.$el=this.createElement()
     },
     addPrototype(item){
     	item.construction = item;
@@ -25,9 +25,28 @@ export default{
 		    let firstTd = firstTr.getElementsByTagName('td')[1];
 		    return firstTd;
     	},
-    	item.prototype.setDirection=function(deg) {
-    		this.deg += deg;
-    		this.$el.style.transform = 'rotate(' +this.deg + 'deg)' 
+    	item.prototype.setDirection=function(text) {
+    		let codeArr=[
+    			{
+    				text:'LEF',
+    				code:'-90'
+    			},
+    			{
+    				text:'RIG',
+    				code:'90'
+    			},
+    			{
+    				text:'BOT',
+    				code:'180'
+    			},
+    		]
+    		for(let k of codeArr){
+    			if(k.text == text){
+    				let deg = Number(k.code)
+    				this.deg += deg;
+    				this.$el.style.transform = 'rotate(' +this.deg + 'deg)' 
+    			}
+    		}
     	}
     },
     init(){
