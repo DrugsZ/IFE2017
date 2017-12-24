@@ -13,7 +13,7 @@ export function CreateCar(){
             carImg.src = "style/BOT.png";
             carImg.classList = 'carImg'
             carDiv.appendChild(carImg)
-            carDiv.style.transform = 'rotate(' +this.deg + 'deg)' 
+            carDiv.style.transform = 'rotate(' +this.deg + 'deg)'
             firstTd.appendChild(carDiv)
             return carDiv
         },
@@ -42,7 +42,13 @@ export function CreateCar(){
             if(k.text == text){
                 let deg = Number(k.code)
                 this.deg += deg;
-                this.$el.style.transform = 'rotate(' +this.deg + 'deg)' 
+                this.$el.style.transform = 'rotate(' +this.deg + 'deg)'
             }
         }
+    },
+    CreateCar.prototyoe.render = function(){
+          let el = this.$el;
+          let size = Number(el.offsetWdith);
+          el.style.width = this.x * size;
+          el.style.height = this.y * size;
     }
