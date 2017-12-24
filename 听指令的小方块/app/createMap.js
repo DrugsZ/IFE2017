@@ -25,5 +25,5 @@ export default{
          trs[i].querySelector('td').innerHTML = i;
          trs[0].querySelectorAll('td')[i].innerHTML = i;
        }
-     }
+		 }
 }
