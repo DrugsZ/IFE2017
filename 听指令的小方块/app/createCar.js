@@ -63,12 +63,14 @@ export function CreateCar(){
         let firstTd = firstTr.getElementsByTagName('td')[1];
         return firstTd;
     },
+    //设置地图尺寸以判定是否越界, 修改存疑?
     CreateCar.prototype.setMapSize = function(size){
         if(typeof(size)!= 'number'){
             console.log('Map size must be number')
         }
         this.mapSize = size;
     }
+    //设置转向
     CreateCar.prototype.setDirection=function(text) {
         if(text == 'TOP')return
         for(let k of this.direction){
@@ -79,6 +81,7 @@ export function CreateCar(){
             }
         }
     },
+    //获取当前朝向
     CreateCar.prototype.getDirection = function(deg=this.deg){
         deg += 360;
         deg = deg%360;
@@ -89,6 +92,7 @@ export function CreateCar(){
             }
         }
     },
+    //数据与表现分离,在每次修正对象数据后进行render操作
     CreateCar.prototype.render = function(){
           let el = this.$el;
           let size = new Number(el.offsetWidth);
@@ -99,6 +103,7 @@ export function CreateCar(){
         time = time/1000;
         this.$el.style.transition = time+'s'
     },
+    //前进
     CreateCar.prototype.go = function(){
         let dirObject = this.getDirection()
         if(!dirObject){
