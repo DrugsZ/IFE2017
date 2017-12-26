@@ -1,7 +1,13 @@
+/*
+ * @Author:  DrugsZ
+ * @Date: 2017-12-26 16:43:52 
+ * @Last Modified by: DrugsZ
+ * @Last Modified time: 2017-12-26 17:44:03
+ */
 body{
     margin:0;
     padding: 0;
-}
+} 
 table{
     border-collapse: collapse;
     text-align: center;
@@ -34,4 +40,25 @@ tr:nth-of-type(n+2)>td:nth-of-type(n+2){
     position: absolute;
     left:0;
     top:0;
+}
+.command{
+    position: absolute;
+    right:10px;
+    background: #bdc3c7;
+    top:50%;
+    transform: translate(0%,-50%);
+}
+.command textarea{
+    background: rgb(40, 44, 52);
+    font-size: 22px;
+    color: #fff;
+    line-height: 30px;
+    resize: none;
+    width:300px;
+    height:600px;
+    margin-left:30px;
+}
+.command .lineNumber{
+    height: 100%;
+    width: 30px;
 }
