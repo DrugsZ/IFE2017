@@ -2,7 +2,7 @@
  * @Author:  DrugsZ
  * @Date: 2017-12-26 16:43:52 
  * @Last Modified by: DrugsZ
- * @Last Modified time: 2017-12-26 17:44:03
+ * @Last Modified time: 2017-12-26 21:50:20
  */
 body{
     margin:0;
@@ -50,15 +50,42 @@ tr:nth-of-type(n+2)>td:nth-of-type(n+2){
 }
 .command textarea{
     background: rgb(40, 44, 52);
-    font-size: 22px;
+    font-size: 18px;
     color: #fff;
-    line-height: 30px;
     resize: none;
     width:300px;
     height:600px;
     margin-left:30px;
+    display: block
 }
 .command .lineNumber{
     height: 100%;
     width: 30px;
+    position: absolute;
+    text-align: center
+}
+.line_height{
+    line-height:  24px;
+}
+.command .lineNumber .success{
+    background: rgba(40, 252, 40, 0.39);
+}
+.command .lineNumber .error{
+    background: #962f34;
+}
+.bgy{
+    background: rgb(255, 255, 42);
+}
+.command .number{
+    height:24px;
+    width: 100%;
+    text-align: center
+}
+.command .number span{
+    height: 22px;
+    width: 22px;
+    background: red;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 2px;
 }
