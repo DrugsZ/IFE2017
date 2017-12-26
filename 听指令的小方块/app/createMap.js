@@ -4,7 +4,7 @@
 export default{
      setMap(num=20){
      	let table = document.createElement('table')
-     	let n = num
+     	let n = num+1
      	if (n<=0) {
      		console.log('please set num to greater than zero')
      	}
@@ -25,5 +25,5 @@ export default{
          trs[i].querySelector('td').innerHTML = i;
          trs[0].querySelectorAll('td')[i].innerHTML = i;
        }
-		 }
+	}
 }
