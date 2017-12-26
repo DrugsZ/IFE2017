@@ -1,10 +1,11 @@
     import setMap from "./createMap.js"
     import {CreateCar} from "./createCar.js"
-    import { createCommandDiv } from "./createCommandArea.js"
+    import { createCommandDiv} from "./createCommandArea.js"
 
 	export function init(){
-        let table = setMap.setMap()
         let map = document.getElementById('map')
+        let table = setMap.setMap()
+        map.appendChild(table)
         let size = table.childNodes.length
         createCommandDiv()
         map.appendChild(table)
