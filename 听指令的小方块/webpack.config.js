@@ -8,6 +8,9 @@ module.exports = {
         path:"/", 
         filename: "bundle.js"
     },
+    devServer: {
+        port: 8090,
+    },
     module: {
         loaders: [
             {
