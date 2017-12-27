@@ -1,4 +1,4 @@
-import {addHandler} from "./bindKeyEvent.js"
+import {addHandler} from "./util.js"
 export function createCommandDiv(){
         let parentDiv = document.createElement('div');
         parentDiv.className = 'command';
