@@ -81,6 +81,19 @@ export function CreateCar(){
             }
         }
     },
+    /*
+    *@params:
+    *@return:Boolean
+    */
+    //判断是否越界
+    CreateCar.prototype.isOverstep = function(x,y){
+        x += this.x;
+        y += this.y;
+        // if(x>this.mapSize||y>this.mapSize){
+        //     return true
+        // }
+        return x>this.mapSize||y>this.mapSize
+    }
     //获取当前朝向
     CreateCar.prototype.getDirection = function(deg=this.deg){
         deg += 360;
