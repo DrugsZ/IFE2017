@@ -20,7 +20,6 @@ export function initCommand(){
     setTimeout(function(){
         addNumber(1)
         addHandler(COMMAND,'keyup',function(){
-            console.log(121)
             renderLine(getLineNumber())
         })
     },0)
@@ -50,8 +49,20 @@ function createNumber(i){
 }
 
 function getLineNumber(){
-    VALUE = document.querySelector('textarea').value;
-    let n = VALUE.split('\n').length
-    console.log(n)
+    let value = document.querySelector('textarea').value;
+    let n = value.split('\n').length
+    // console.log(value.split('\n'))
     return n;
+}
+/*
+*@param:any
+*@return:Array
+*/
+function getCommandStr(){
+    let value
+    return value = document.querySelector('textarea').value.split('\n');
+}
+
+function checkCommandLegal(){
+
 }
