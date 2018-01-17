@@ -1,3 +1,9 @@
+/*
+ * 创建人: DrugsZ 
+ * 创建时间: 2018-01-17 14:28:27 
+ * 修改人:   DrugsZ 
+ * 最后修改时间: 2018-01-17 14:28:27 
+ */
     import setMap from "./createMap.js"
     import {CreateCar} from "./createCar.js"
     import { initCommand} from "./createCommandArea.js"
