@@ -1,4 +1,3 @@
-console.log(11)
 let obj = {
     title:'提示',
     message:'提示信息'
@@ -20,7 +19,6 @@ class createShade {
     }
     init(ele){
         this.createDOM('body');
-        this.setObserve()
     }
     createDOM(ele = 'body'){
         let time = new Date().getTime()
@@ -47,40 +45,45 @@ class createShade {
         this.messageContent = contentDOM.querySelector('.message-content')
     }
     //设置数据绑定
-    setObserve(){
-        if(!this.titleContent || !this.messageContent){
-            this.createDOM()
-        } 
-        Object.defineProperty(this,'title',{
-            __proto__: null,
-            enumerable:true,
-            configurable:true,
-            get:function(){
-                 return this.value
-            },
-            set:function(newVal){
-                // value = newVal
-                this.value = 7
-                this.titleContent.innerHTML = newVal
-            }
-        })
-        Object.defineProperty(this,'message',{
-            __proto__: null,
-            enumerable:true,
-            configurable:true,
-            get:function(){
-                return this.messageContent.innerHTML
-            },
-            set:function(newVal){
-                // value = newVal
-                this.messageContent.innerHTML = newVal
-            }
-        })
-    }
     setMessage(obj) {
         let title = obj.title || '提示'
         let message = obj.message || '苟利国家生死以'
         this.title = title;
         this.message = message
     }
+}
+
+function setObserve(obj){
+    let titleMsg;
+    let messageMsg;
+    Object.defineProperty(obj,'title',{
+        __proto__: null,
+        enumerable:true,
+        configurable:true,
+        get:function(){
+             return titleMsg
+        },
+        set:function(newVal){
+            // value = newVal
+            titleMsg = newVal
+            obj.titleContent.innerHTML = newVal
+        }
+    })
+    Object.defineProperty(obj,'message',{
+        __proto__: null,
+        enumerable:true,
+        configurable:true,
+        get:function(){
+            return messageMsg
+        },
+        set:function(newVal){
+            messageMsg = newVal
+            obj.messageContent.innerHTML = newVal
+        }
+    })
+}
+function GetShade(ele){
+    let obj = new createShade(ele)
+    setObserve(obj)
+    return obj
 }
