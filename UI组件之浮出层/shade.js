@@ -1,8 +1,3 @@
-let obj = {
-    title:'提示',
-    message:'提示信息'
-}
-
 class createShade {
     constructor(ele) {
         let contentDOM;
@@ -21,6 +16,7 @@ class createShade {
         this.createDOM('body');
         this.setObserve()
     }
+    //设置数据绑定
     setObserve(){
         let titleMsg;
         let messageMsg;
@@ -53,6 +49,7 @@ class createShade {
     createDOM(ele = 'body'){
         let time = new Date().getTime()
         let id = `shade_${time}`
+        this.id = id
         let template = `
             <div class="shade" id=${id}>
                 <div class="content">
@@ -61,8 +58,8 @@ class createShade {
                         这是一个浮出层
                     </p></div>
                     <div class="button">
-                        <button>确定</button>
-                        <button>取消</button>
+                        <button id="confirm_${id}">确定</button>
+                        <button id='cancel_${id}'>取消</button>
                     </div>
                 </div>
             </div>
@@ -73,12 +70,60 @@ class createShade {
         this.setContent(contentDOM)
         this.titleContent = contentDOM.querySelector('.title-message')
         this.messageContent = contentDOM.querySelector('.message-content')
+        this.setEventHandle()
     }
-    //设置数据绑定
     setMessage(obj) {
         let title = obj.title || '提示'
         let message = obj.message || '苟利国家生死以'
         this.title = title;
         this.message = message
+    }
+    setEventHandle(){
+        let that = this
+        let shade = document.querySelector('.shade')
+        let confirmBtn = document.getElementById(`confirm_${this.id}`)
+        let cancelBtn = document.getElementById(`cancel_${this.id}`)
+        addEvent(shade,'click',function(){
+            that.hideAlert()
+        })
+        addEvent(confirmBtn,'click',function(){
+            that.hideAlert
+        })
+        addEvent(cancelBtn,'click',function(){
+            that.hideAlert
+        })
+    }
+    showAlert(obj = {}){
+        let contentDOM = this.getContent()
+        this.setMessage(obj)
+        contentDOM.style.display = 'block';
+    }
+    hideAlert(){
+        let contentDOM = this.getContent()
+        contentDOM.style.display = 'none'
+    }
+}
+/**
+ * 兼容事件绑定方法
+ * @param[Object] Dom The Dom to addEvent
+ * @param[string] type The type to  monitor
+ * @param[Function] handle 事件处理函数 
+ */
+function addEvent(ele,type,handle){
+    if(ele.addEventListener){
+        ele.addEventListener(type,handle,false)
+    }else if (ele.attachEvent) {
+        ele.attachEvent("on"+event,handler);
+    }else{
+        ele[on+"event"]=handler;
+    }
+}
+
+function getCreateMsgFnc(titleInput,messageInput){
+    return function(){
+        let obj = {}
+        obj.title = titleInput.value
+        obj.message = messageInput.value
+        return obj
     }
 }
