@@ -19,6 +19,36 @@ class createShade {
     }
     init(ele){
         this.createDOM('body');
+        this.setObserve()
+    }
+    setObserve(){
+        let titleMsg;
+        let messageMsg;
+        Object.defineProperty(this,'title',{
+            __proto__: null,
+            enumerable:true,
+            configurable:true,
+            get:function(){
+                 return titleMsg
+            },
+            set:function(newVal){
+                // value = newVal
+                titleMsg = newVal
+                this.titleContent.innerHTML = newVal
+            }
+        })
+        Object.defineProperty(this,'message',{
+            __proto__: null,
+            enumerable:true,
+            configurable:true,
+            get:function(){
+                return messageMsg
+            },
+            set:function(newVal){
+                messageMsg = newVal
+                this.messageContent.innerHTML = newVal
+            }
+        })
     }
     createDOM(ele = 'body'){
         let time = new Date().getTime()
@@ -51,39 +81,4 @@ class createShade {
         this.title = title;
         this.message = message
     }
-}
-
-function setObserve(obj){
-    let titleMsg;
-    let messageMsg;
-    Object.defineProperty(obj,'title',{
-        __proto__: null,
-        enumerable:true,
-        configurable:true,
-        get:function(){
-             return titleMsg
-        },
-        set:function(newVal){
-            // value = newVal
-            titleMsg = newVal
-            obj.titleContent.innerHTML = newVal
-        }
-    })
-    Object.defineProperty(obj,'message',{
-        __proto__: null,
-        enumerable:true,
-        configurable:true,
-        get:function(){
-            return messageMsg
-        },
-        set:function(newVal){
-            messageMsg = newVal
-            obj.messageContent.innerHTML = newVal
-        }
-    })
-}
-function GetShade(ele){
-    let obj = new createShade(ele)
-    setObserve(obj)
-    return obj
 }
