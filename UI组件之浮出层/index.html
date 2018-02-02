@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./style.css">
-    <script src="./shade.js"></script>
     <title>Document</title>
 </head>
 <body>
+    <div class="input_div">
+        <label for="title_Input">标题</label><input type="text" id="title_Input">
+        <label for="message_Input">内容</label><input type="text" id="message_Input">
+        <button id="alert_btn">弹弹弹</button>
+    </div>
+    <script src="./shade.js"></script>
     <script>
         let shade = new createShade('body')
+        let titleInput = document.getElementById('title_Input')
+        let messageInput = document.getElementById('message_Input')
+        let alert_btn = document.getElementById('alert_btn')
+
+        let getMsg = getCreateMsgFnc(titleInput,messageInput)
+        addEvent(alert_btn,'click',function(){
+            shade.showAlert(getMsg())
+        })
     </script>
 </body>
 </html>
