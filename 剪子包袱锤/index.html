@@ -11,14 +11,22 @@
     <div class="wrapper">
         <div class="left">
         <!-- 玩家操作区 -->
-            <div class="options select-base">
+            <div class="options select-base" id="person-select">
 
             </div>
-            <select>
-                <option value="scissors">剪刀</option>
-                <option value="rock">石头</option>
-                <option value="paper">布</option>
-            </select>
+            <div class="control">
+                <div>
+                    <label class="select-label">请选择:</label>
+                    <select class="select">
+                        <option value="scissors">剪刀</option>
+                        <option value="rock">石头</option>
+                        <option value="paper">布</option>
+                    </select>
+                </div>
+                <div>
+                    <button class="submit">我选择好了</button>
+                </div>
+            </div>
         </div>
         <!-- 对比区 -->
         <div class="center">
@@ -34,10 +42,11 @@
                 </div>
             </div>
             <div>
+                <p class="result">ces</p>
             </div>
         </div>
         <div class="right">
-            <div class="options select-base">
+            <div class="options select-base" id="pc-select">
 
             </div>
         </div>
@@ -45,6 +54,12 @@
     <script src="./script.js"></script>
     <script>
         let mora = new Mora()
+
+        let result = query('.submit')
+
+        result.addEventListener('click',e=>{
+            mora.goCompare()
+        },false)
     </script>
 </body>
 </html>
