@@ -1,17 +1,39 @@
 class Mora {
     constructor() {
-        this.personSelect = query('.person-show-space');
-        this.pcSelect = query('.pc-show-space');
+        this.personSelect = query('#person-select');
+        this.pcSelect = query('#pc-select');
         this.personData = 'scissors';
         this.pcData = 'scissors';
         this.init()
+        this.PERSON_SELECT_OBJ = {
+            rock:{
+                paper:'lose',
+                rock:'dogfall',
+                scissors:'win'
+            },
+            paper:{
+                paper:'dogfall',
+                rock:'win',
+                scissors:'lose'
+            },
+            scissors:{
+                paper:'win',
+                rock:'lose',
+                scissors:'dogfall'
+            },
+        }
     }
     init(){
         //数据与DOM绑定
-        this.compile('pcData',query('select'),this.pcData)
+        this.compile('personData',query('select'),this.personData)
         let self = this
         //设置数据观察
-        this.watch(this,'pcData',this.pcData,[
+        this.watch(this,'personData',this.personData,[
+            function(newVal,val){
+                self.setData(newVal,val,'person')
+            }
+        ])
+        this.watch(this,'pcData',this.personData,[
             function(newVal,val){
                 self.setData(newVal,val)
             }
@@ -83,8 +105,10 @@ class Mora {
 
                 if(setter){
                     setter(newVal)
+                }else{
+                    value = newVal
                 }
-
+                
                 if(fn instanceof Array){
                     fn.forEach( item => {
                         if(typeof item === 'function'){
@@ -94,6 +118,35 @@ class Mora {
                 }
             }
         })
+    }
+    /**
+     * @returns{string} 返回 ['rock','paper','scissors']数组中的随机一个
+     */
+    getRandom(){
+        let arr = ['rock','paper','scissors'];
+        return arr[Math.floor(Math.random() * 3)]
+    }
+    /**
+     * 
+     * @param {string} personSelect 玩家选择项
+     * @param {string} pcSelect 电脑选择项
+     * @returns {string} 返回以玩家角度输赢情况 [lose,win,dogfall]
+     */
+    compare(personSelect,pcSelect){
+        if(!personSelect || !pcSelect){
+            throw '缺少值'
+        }
+        return this.PERSON_SELECT_OBJ[personSelect][pcSelect]
+    }
+    /**
+     * 
+     */
+    goCompare(){
+        this.pcData = this.getRandom();
+        let result = this.compare(this.personData,this.pcData)
+
+        let showResule = query('.result')
+        showResule.innerHTML = result
     }
 
 }
