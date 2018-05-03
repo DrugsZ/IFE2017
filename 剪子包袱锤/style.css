@@ -119,11 +119,13 @@
     line-height: 30px;   
 }
 .result{
-    text-align: center
+    text-align: center;
+    font-size: 30px;
 }
 .submit{
     width: 100px;
     height: 30px;
     top: 10px;
+    left:25px;
     position: relative;
 }
