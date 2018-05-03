@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Picker</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="content">
+        <input type="text">
+        <div class="wapper">
+
+        </div>
+    </div>
+
+    <script src="./zQuery.js"></script>
+    <script src="./util.js"></script>
+    <script>
+        let input = query('input')
+        let wapper = query('.wapper')
+        
+        let ii = zQuery('input')
+        console.log(ii)
+
+        input.addEventListener('focus',(e)=>{
+            wapper.classList.add('show')
+        },false)
+        wapper.addEventListener('transitionend',(e)=>{
+            console.log(e)
+        })
+    </script>
+    <!-- <script type="module" src="./util.js">
+        import { addTextToBody } from './util.js'
+
+         addTextToBody('Modules are pretty cool.');
+        // query('input')
+    </script> -->
+</body>
+</html>
