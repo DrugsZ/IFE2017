@@ -42,6 +42,11 @@ class Mora {
             }
         ])
     }
+    /**
+     * 
+     * @param {object || Array} mode 将要设置的模式
+     * @param {string} selectData 所选择数据
+     */
     async setShow(mode,selectData){
         let cesh = ['rock','paper','scissors']
         let i = 1 ;
@@ -57,6 +62,12 @@ class Mora {
         }
         this.setClass(mode,selectData)
     }
+    /**
+     * 
+     * @param {*} mode 
+     * @param {*} className 
+     * @param {*} i 
+     */
     getPromise(mode,className,i){
         if( i >= 5 ) i = 5
         let p = new Promise( (resolve,reject) => {
@@ -67,6 +78,11 @@ class Mora {
         })
         return p
     }
+    /**
+     * 
+     * @param {Object || Array } mode  索要设置模式 
+     * @param {string} className class名称 
+     */
     setClass(mode,className){
         if(mode instanceof Array){
             mode.forEach( item => {
@@ -76,6 +92,11 @@ class Mora {
             this.setSingleClass(mode,className)
         }
     }
+    /**
+     * 
+     * @param {DOM Object} el 要设置class的DOM对象
+     * @param {string} className class名称
+     */
     setSingleClass(el,className){
         remove( el,'rock')
         remove( el,'paper')
@@ -203,11 +224,26 @@ class Mora {
     }
 
 }
-
+/**
+ * let id = query('.id')
+ * @param {string} str 要获取的元素标识符
+ * @returns {object} 返回第一个匹配到的元素
+ */
 let query = (str) => document.querySelector(str)
+
+/**
+ * 
+ * @param {DOMObject} el DOM对象
+ * @param {string} className class名称
+ */
 let remove = (el,className) =>{
     el.classList.remove(className)
 }
+/**
+ * 
+ * @param {DOMObject} el DOM对象
+ * @param {string} className class名称
+ */
 let add = (el,className) =>{
     el.classList.add(className)
 }
