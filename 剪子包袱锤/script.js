@@ -4,6 +4,8 @@ class Mora {
         this.pcSelect = query('#pc-select');
         this.personData = 'scissors';
         this.pcData = 'scissors';
+        this.perspnShowSelect = query('.person-show-space')
+        this.pcShowSelect = query('.pc-show-space')
         this.init()
         this.PERSON_SELECT_OBJ = {
             rock:{
@@ -36,8 +38,49 @@ class Mora {
         this.watch(this,'pcData',this.personData,[
             function(newVal,val){
                 self.setData(newVal,val)
+                self.setSingleClass(self.pcSelect,newVal)
             }
         ])
+    }
+    async setShow(mode,selectData){
+        let cesh = ['rock','paper','scissors']
+        let i = 1 ;
+        let len = 50;
+        let result = true;
+
+        while(result){
+            result = await this.getPromise(mode,cesh[50%i],i)
+            i++
+            if(i>=len){
+                result = false
+            }
+        }
+        this.setClass(mode,selectData)
+    }
+    getPromise(mode,className,i){
+        if( i >= 5 ) i = 5
+        let p = new Promise( (resolve,reject) => {
+            setTimeout(() => {
+                this.setClass(mode,className)
+                resolve(true)
+            }, i * 20);
+        })
+        return p
+    }
+    setClass(mode,className){
+        if(mode instanceof Array){
+            mode.forEach( item => {
+                this.setSingleClass( item, className)
+            })
+        }else{
+            this.setSingleClass(mode,className)
+        }
+    }
+    setSingleClass(el,className){
+        remove( el,'rock')
+        remove( el,'paper')
+        remove( el,'scissors')
+        if(className)add( el,className)
     }
     /**
      * 
@@ -47,8 +90,8 @@ class Mora {
     setData(newVal,val,mode){
         mode = mode === 'person' ? 'personSelect' : 'pcSelect';
 
-        this[mode].classList.remove(val);
-        this[mode].classList.add(newVal);
+        if(val)this[mode].classList.remove(val);
+        if(newVal)this[mode].classList.add(newVal);
     }
     /**
      * 
@@ -141,8 +184,18 @@ class Mora {
     /**
      * 
      */
-    goCompare(){
-        this.pcData = this.getRandom();
+    async goCompare(){
+        // this.setClass(this['perspnShowSelect'],this.personData)
+        this.pcData = '';
+
+        let pcData = this.getRandom();
+        
+        let timer = await this.setShow([this['perspnShowSelect'],this['pcShowSelect']],this.personData)
+
+        this.pcData = pcData
+        // let pcTimer = await this.setShow(,this.pcData)
+
+
         let result = this.compare(this.personData,this.pcData)
 
         let showResule = query('.result')
@@ -152,3 +205,9 @@ class Mora {
 }
 
 let query = (str) => document.querySelector(str)
+let remove = (el,className) =>{
+    el.classList.remove(className)
+}
+let add = (el,className) =>{
+    el.classList.add(className)
+}
