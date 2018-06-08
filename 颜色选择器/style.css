@@ -1,13 +1,33 @@
+:root{
+    --border-size: 25px;
+}
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+}
+body{
+    padding-top: 200px;
 }
 .container{
-    display: inline-block;
+    display:block;
     /* padding: 50px; */
-    top: 50px;
     position: relative;
-    left: 50px;
+    height: 400px;
+    width: 250px;
+    margin: 0 auto;
+    border-radius: var(--border-size);
+    box-shadow: 0 15px 30px #ccc;
+}
+.container .color-render{
+    height: 160px;
+    background:#000000;
+    border-top-left-radius: var(--border-size);
+    border-top-right-radius: var(--border-size);
+}
+.container .pick-line{
+    height: 15px;
+    background: yellow;
 }
 .panel{
     width: 400px;
