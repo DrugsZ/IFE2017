@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            perspective: 800;
+            -webkit-perspective: 800;
+        }
+        .container{
+            width: 250px;
+            height:350px;
+            margin: 100px auto;
+        }
+        .container:hover .pic_1{
+            transform:  rotateY(360deg)
+        }
+        .container:hover .pic_2{
+            transform:  rotateY(180deg)
+        }
+        .pic_1{
+            transform: rotateY(180deg)
+        }
+        .pic_2{
+            transform: rotateY(0deg);
+        }
+        .absolute{
+            position: absolute;
+            backface-visibility: hidden;
+            transition: .5s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="pic_1 absolute" src="./image/反面.jpg" alt="">
+        <img class="pic_2 absolute" src="./image/正面.jpg" alt="">
+    </div>
+</body>
+</html>
