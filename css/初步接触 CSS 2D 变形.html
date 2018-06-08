@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css 初步接触 CSS 2D 变形</title>
+    <style>
+        .container{
+            display: flex;
+            padding-top:100px;
+        }
+        .container div{
+            width: 50px;
+            height: 50px;
+            margin: 0 50px;
+            background: #ccc;
+        }
+        .item_01{
+
+        }
+        .item_02{
+            transform: skewX(30deg)
+        }
+        .item_03{
+            transform: scale(.5,1)
+        }
+        .item_04{
+            transform: rotate(45deg)
+        }
+        .item_05{
+            transform: translate(10px,20px)
+        }
+        .item_06{
+            transform: skewX(30deg) scale(.5,1) rotate(45deg) translate(10px,20px)
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div></div>
+        <div class="item_02"></div>
+        <div class="item_03"></div>
+        <div class="item_04"></div>
+        <div class="item_05"></div>
+        <div class="item_06"></div>
+    </div>
+</body>
+</html>
