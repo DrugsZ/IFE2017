@@ -1,0 +1,11 @@
+{
+    "URL": "http://127.0.0.1:8089",
+    "resolution":{
+        "width":1920,
+        "height":1048
+    },
+    "loginInfo":{
+        "userName":"",
+        "passWord":""
+    }
+}
